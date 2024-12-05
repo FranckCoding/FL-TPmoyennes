@@ -65,9 +65,9 @@ namespace HNI_TPmoyennes
 
 			foreach (Note note in this.notes)
 			{
-				if (matieres[indexMatiere] == notes[i].matiere) 
+				if (matieres[indexMatiere] == note.matiere) 
 				{
-                    moyenne += notes[i].moyenneMatiere(indexMatiere);
+                    moyenne += note.moyenneMatiere(indexMatiere);
 					compte++;
                 }
             }
