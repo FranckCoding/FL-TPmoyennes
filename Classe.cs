@@ -33,11 +33,11 @@ namespace HNI_TPmoyennes
 			try
 			{
 				if (nom == "")
-					throw new Exception(nameof(nom), "Le nom donné à la classe est invalide.");
+					throw new Exception("Le nom donné à la classe est invalide.");
 				this.nomClasse = nom;
-				this.eleves = null;
-				this.matieres = null;
-			}
+				this.eleves = new List<Eleve>();
+                this.matieres = new List<String>();
+            }
 			catch (Exception e)
 			{
 				Console.WriteLine($"Echec de la création de la classe: {e.Message}");
@@ -52,11 +52,6 @@ namespace HNI_TPmoyennes
 		/// <param name="nom">Nom de famille du nouvel élève</param>
 		public void ajouterEleve(String prenom, String nom) 
 		{
-			if (!this.eleves)
-			{
-				this.eleves = new List<Eleve> ();
-			}
-
 			try
 			{
 				if (this.eleves.Count < 30)
@@ -65,7 +60,7 @@ namespace HNI_TPmoyennes
 				}
                 else
                 {
-                    throw new ArgumentOutOfRangeException(nameof(prenom + nom), "Le nombre maximale d'élèves dans cette classe a déjà été atteinte.");
+                    throw new ArgumentOutOfRangeException("Le nombre maximale d'élèves dans cette classe a déjà été atteinte.");
                 }
             }
             catch (ArgumentException e)
@@ -81,11 +76,6 @@ namespace HNI_TPmoyennes
 		/// <param name="nom">Nom de la matière</param>
 		public void ajouterMatiere(String nom)
 		{
-			if (!this.matieres)
-			{
-				this.matieres = new List<String>();
-			}
-
 			try
 			{
 				if (this.matieres.Count < 10)
@@ -97,7 +87,7 @@ namespace HNI_TPmoyennes
 					throw new ArgumentOutOfRangeException(nameof(nom), "Le nombre maximale de matière a déjà été atteinte.");
 				}
 			}
-			catch (ArgumentException e)
+			catch (Exception e) when (e is ArgumentOutOfRangeException || e is ArgumentNullException)
 			{
 				Console.WriteLine($"Echec de l'ajout de la matière: {e.Message}");
 			}
@@ -108,9 +98,9 @@ namespace HNI_TPmoyennes
 		/// </summary>
 		/// <param name="indexMatiere">Index de la matiere dans la liste</param>
 		/// <returns>La moyenne de la classe dans la matière enseignée</returns>
-		public int moyenneMatiere(int indexMatiere)
+		public float moyenneMatiere(int indexMatiere)
 		{
-			int moyenne = 0, tailleListe = this.eleves.Count;
+			float moyenne = 0, tailleListe = this.eleves.Count;
 
 			try
 			{
@@ -133,9 +123,9 @@ namespace HNI_TPmoyennes
 		/// Calcule la moyenne générale de la classe
 		/// </summary>
 		/// <returns>La moyenne générale de la classe</returns>
-		public int moyenneGeneral()
+		public float moyenneGeneral()
 		{
-            int moyenne = 0, tailleListe = this.matieres.Count;
+            float moyenne = 0, tailleListe = this.matieres.Count;
 
             try
             {
