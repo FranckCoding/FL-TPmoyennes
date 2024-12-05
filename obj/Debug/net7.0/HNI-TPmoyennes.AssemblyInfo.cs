@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HNI-TPmoyennes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a43fb2305f7021f79690f4c9ccc31c791990d863")]
 [assembly: System.Reflection.AssemblyProductAttribute("HNI-TPmoyennes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HNI-TPmoyennes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
