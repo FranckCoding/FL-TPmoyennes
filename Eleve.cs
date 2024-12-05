@@ -20,11 +20,19 @@ namespace HNI_TPmoyennes
 		/// </summary>
 		public List<Note> notes { get; set; }
 
-		public Eleve()
+		/// <summary>
+		/// Constructeur du modèle Eleve
+		/// </summary>
+		/// <param name="prenom">Prenom du nouvel élève</param>
+		/// <param name="nom">Nom de famille du nouvel élève</param>
+		public Eleve(String prenom, String nom)
 		{
-			//
-			// TODO: Add constructor logic here
-			//
+			if (prenom == null || prenom == "" || nom == null || nom = "")
+				throw new ArgumentNullException("Les variables prénom et/ou nom de l'élève sont soit null, soit une chaîne vide.");
+
+			this.prenom = prenom;
+			this.nom = nom;
+			this.notes = new List<Note>();
 		}
 	}
 }
