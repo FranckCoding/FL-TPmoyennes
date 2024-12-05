@@ -79,5 +79,24 @@ namespace HNI_TPmoyennes
 
             return moyenne;
 		}
+
+		/// <summary>
+		/// Calcule la moyenne générale de l'élève
+		/// </summary>
+		/// <returns>La moyenne générale de l'élève</returns>
+		public float moyenneGeneral()
+		{
+			int moyenne = 0;
+
+            for (int i = 0; i < 10; i++)
+	        {
+		        moyenne += this.moyenneMatiere(i);
+			}
+
+			moyenne /= 10;
+
+
+            return moyenne;
+        }
     }
 }
