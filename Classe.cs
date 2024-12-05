@@ -11,23 +11,18 @@ namespace HNI_TPmoyennes
 		/// <summary>
 		/// Nom de la classe
 		/// </summary>
-		public String nom {  get; set; }
+		public String nomClasse {  get; set; }
 
 		/// <summary>
 		/// Liste des élèves dans la classe
 		/// </summary>
-        public List<Eleve> listEleve { get; set; }
+        public List<Eleve> eleves { get; set; }
 
         /// <summary>
         /// Liste des matières enseignées dans la classe avec les 
         /// moyennes associées
         /// </summary>
-        public Dictionary<string, int> listMatiere { get; set; }
-
-        /// <summary>
-        /// Moyenne générale de la classe
-        /// </summary>
-        public int moyenneGeneral { get; set; }
+        public List<String> matieres { get; set; }
 
 		/// <summary>
 		/// Constructeur du modèle Classe
@@ -35,7 +30,11 @@ namespace HNI_TPmoyennes
 		/// <param name="nom">Nom de la classe à attribuer</param>
         public Classe(String nom)
 		{
-            this.nom = nom;
+            this.nomClasse = nom;
+			this.eleves = null;
+			this.matieres = null;
+			this.moyenneMatiere = null;
+            this.moyenneGeneral = 0;
 		}
     }
 }
