@@ -54,5 +54,30 @@ namespace HNI_TPmoyennes
             }
 		}
 
+		/// <summary>
+		/// Calcule la moyenne d'un élève pour une matière donnée
+		/// </summary>
+		/// <param name="indexMatiere">Index de la matière dont souhaite avoir la moyenne</param>
+		/// <returns>Moyenne de l'élève sur une matière donnée</returns>
+		public float moyenneMatiere(int indexMatiere)
+		{
+			int moyenne = 0, compte = 0;
+
+			foreach (Note note in this.notes)
+			{
+				if (matieres[indexMatiere] == notes[i].matiere) 
+				{
+                    moyenne += notes[i].moyenneMatiere(indexMatiere);
+					compte++;
+                }
+            }
+
+			if (compte > 0)
+			{
+				moyenne /= compte;
+			}
+
+            return moyenne;
+		}
     }
 }
