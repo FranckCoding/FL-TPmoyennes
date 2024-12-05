@@ -120,5 +120,30 @@ namespace HNI_TPmoyennes
 			}
 			
 		}
+
+		/// <summary>
+		/// Calcule la moyenne générale de la classe
+		/// </summary>
+		/// <returns>La moyenne générale de la classe</returns>
+		public int moyenneGeneral()
+		{
+            int moyenne = 0, tailleListe = this.matieres.Count;
+
+            try
+            {
+                for (int i = 0; i < tailleListe; i++)
+                {
+                    moyenne += this.moyenneMatiere(i);
+                }
+
+                moyenne /= tailleListe;
+            }
+            catch (Exception e) when (e is DivideByZeroException)
+            {
+                Console.WriteLine($"Echec du calcule de la moyenne generale: {e.Message}");
+            }
+
+			return moyenne;
+        }
     }
 }
