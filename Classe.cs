@@ -73,5 +73,30 @@ namespace HNI_TPmoyennes
 				this.matieres.Add(nom);
 			}
 		}
+
+		/// <summary>
+		/// Calcule la moyenne pour une matière enseignée dans cette classe
+		/// </summary>
+		/// <param name="indexMatiere">Index de la matiere dans la liste</param>
+		/// <returns>La moyenne de la classe dans la matière enseignée</returns>
+		public int moyenneMatiere(int indexMatiere)
+		{
+			int somme = 0, tailleListe = this.eleves.Count;
+
+			try
+			{
+				for (int i = 0; i < tailleListe; i++)
+				{
+					somme += this.eleves[i].moyenneMatiere(indexMatiere);
+				}
+
+                return somme / tailleListe;
+            }
+			catch (Exception e) when (e is DivideByZeroException)
+			{
+				Console.WriteLine($"Echec du calcule de la matière {this.matieres[indexMatiere]}: {e.Message}");
+			}
+			
+		}
     }
 }
