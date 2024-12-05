@@ -50,11 +50,22 @@ namespace HNI_TPmoyennes
 				this.eleves = new List<Eleve> ();
 			}
 
-			if (this.eleves.Count < 30)
+			try
 			{
-				this.eleves.Add(new Eleve(prenom, nom));
-			}
-		}
+				if (this.eleves.Count < 30)
+				{
+					this.eleves.Add(new Eleve(prenom, nom));
+				}
+                else
+                {
+                    throw new ArgumentOutOfRangeException(nameof(prenom + nom), "Le nombre maximale d'élèves dans cette classe a déjà été atteinte.");
+                }
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine($"Echec de l'ajout de l'élève: {e.Message}");
+            }
+        }
 
 		/// <summary>
 		/// Methode de classe pour ajouter une matière à la liste
@@ -68,9 +79,20 @@ namespace HNI_TPmoyennes
 				this.matieres = new List<String>();
 			}
 
-			if (this.matieres.Count < 10)
+			try
 			{
-				this.matieres.Add(nom);
+				if (this.matieres.Count < 10)
+				{
+					this.matieres.Add(nom);
+				}
+				else
+				{
+					throw new ArgumentOutOfRangeException(nameof(nom), "Le nombre maximale de matière a déjà été atteinte.");
+				}
+			}
+			catch (ArgumentException e)
+			{
+				Console.WriteLine($"Echec de l'ajout de la matière: {e.Message}");
 			}
 		}
 
