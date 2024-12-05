@@ -30,11 +30,18 @@ namespace HNI_TPmoyennes
 		/// <param name="nom">Nom de la classe à attribuer</param>
         public Classe(String nom)
 		{
-            this.nomClasse = nom;
-			this.eleves = null;
-			this.matieres = null;
-			this.moyenneMatiere = null;
-            this.moyenneGeneral = 0;
+			try
+			{
+				if (nom == "")
+					throw new Exception(nameof(nom), "Le nom donné à la classe est invalide.");
+				this.nomClasse = nom;
+				this.eleves = null;
+				this.matieres = null;
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine($"Echec de la création de la classe: {e.Message}");
+			}
 		}
 
 		/// <summary>
