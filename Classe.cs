@@ -36,5 +36,24 @@ namespace HNI_TPmoyennes
 			this.moyenneMatiere = null;
             this.moyenneGeneral = 0;
 		}
+
+		/// <summary>
+		/// Methode de classe pour ajouter un élève à la liste des élèves
+		/// d'une classe
+		/// </summary>
+		/// <param name="prenom">Prénom du nouvel élève</param>
+		/// <param name="nom">Nom de famille du nouvel élève</param>
+		public void ajouterEleve(String prenom, String nom) 
+		{
+			if (!this.eleves)
+			{
+				this.eleves = new List<Eleve> ();
+			}
+
+			if (this.eleves.Count < 30)
+			{
+				this.eleves.Add(new Eleve(prenom, nom));
+			}
+		}
     }
 }
