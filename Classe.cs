@@ -55,5 +55,23 @@ namespace HNI_TPmoyennes
 				this.eleves.Add(new Eleve(prenom, nom));
 			}
 		}
+
+		/// <summary>
+		/// Methode de classe pour ajouter une matière à la liste
+		/// des matières enseignées dans une classe
+		/// </summary>
+		/// <param name="nom">Nom de la matière</param>
+		public void ajouterMatiere(String nom)
+		{
+			if (!this.matieres)
+			{
+				this.matieres = new List<String>();
+			}
+
+			if (this.matieres.Count < 10)
+			{
+				this.matieres.Add(nom);
+			}
+		}
     }
 }
