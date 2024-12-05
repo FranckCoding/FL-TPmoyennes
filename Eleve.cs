@@ -34,5 +34,25 @@ namespace HNI_TPmoyennes
 			this.nom = nom;
 			this.notes = new List<Note>();
 		}
-	}
+
+		/// <summary>
+		/// Ajout d'une nouvelle note à la liste des notes de l'élève
+		/// </summary>
+		/// <param name="note">La nouvelle note à ajouter</param>
+		public void ajouterNote(Note note)
+		{
+			try
+			{
+				if (note == null)
+					throw new Exception("La note est une entité nulle");
+
+				this.notes.Add(note);
+			}
+			catch (Exception e)
+			{
+                Console.WriteLine($"Echec de l'ajout de la note: {e.Message}");
+            }
+		}
+
+    }
 }
