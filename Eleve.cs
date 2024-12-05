@@ -18,7 +18,7 @@ namespace HNI_TPmoyennes
 		/// <summary>
 		/// Liste des notes de l'élèves
 		/// </summary>
-		public List<Note> notes { get; set; }
+		internal List<Note> notes { get; set; }
 
 		/// <summary>
 		/// Constructeur du modèle Eleve
@@ -27,7 +27,7 @@ namespace HNI_TPmoyennes
 		/// <param name="nom">Nom de famille du nouvel élève</param>
 		public Eleve(String prenom, String nom)
 		{
-			if (prenom == null || prenom == "" || nom == null || nom = "")
+			if (prenom == null || prenom == "" || nom == null || nom == "")
 				throw new ArgumentNullException("Les variables prénom et/ou nom de l'élève sont soit null, soit une chaîne vide.");
 
 			this.prenom = prenom;
@@ -39,7 +39,7 @@ namespace HNI_TPmoyennes
 		/// Ajout d'une nouvelle note à la liste des notes de l'élève
 		/// </summary>
 		/// <param name="note">La nouvelle note à ajouter</param>
-		public void ajouterNote(Note note)
+		internal void ajouterNote(Note note)
 		{
 			try
 			{
@@ -61,13 +61,13 @@ namespace HNI_TPmoyennes
 		/// <returns>Moyenne de l'élève sur une matière donnée</returns>
 		public float moyenneMatiere(int indexMatiere)
 		{
-			int moyenne = 0, compte = 0;
+			float moyenne = 0, compte = 0;
 
 			foreach (Note note in this.notes)
 			{
-				if (matieres[indexMatiere] == note.matiere) 
+				if (indexMatiere == note.matiere) 
 				{
-                    moyenne += note.moyenneMatiere(indexMatiere);
+                    moyenne += note.note;
 					compte++;
                 }
             }
@@ -77,7 +77,7 @@ namespace HNI_TPmoyennes
 				moyenne /= compte;
 			}
 
-            return moyenne;
+            return MathF.Truncate(moyenne * 100) / 100;
 		}
 
 		/// <summary>
@@ -86,7 +86,7 @@ namespace HNI_TPmoyennes
 		/// <returns>La moyenne générale de l'élève</returns>
 		public float moyenneGeneral()
 		{
-			int moyenne = 0;
+			float moyenne = 0;
 
             for (int i = 0; i < 10; i++)
 	        {
@@ -96,7 +96,7 @@ namespace HNI_TPmoyennes
 			moyenne /= 10;
 
 
-            return moyenne;
+            return MathF.Truncate(moyenne * 100) / 100;
         }
     }
 }

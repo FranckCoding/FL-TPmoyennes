@@ -116,7 +116,7 @@ namespace HNI_TPmoyennes
 				Console.WriteLine($"Echec du calcule de la matière {this.matieres[indexMatiere]}: {e.Message}");
 			}
 
-			return moyenne;
+			return MathF.Truncate(moyenne * 100) / 100;
 		}
 
 		/// <summary>
@@ -141,7 +141,7 @@ namespace HNI_TPmoyennes
                 Console.WriteLine($"Echec du calcule de la moyenne generale: {e.Message}");
             }
 
-			return moyenne;
+			return MathF.Truncate(moyenne * 100) / 100;
         }
     }
 }
