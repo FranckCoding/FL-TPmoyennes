@@ -50,7 +50,10 @@ namespace HNI_TPmoyennes
 			try
 			{
 				if (note == null)
-					throw new Exception("La note est une entité nulle");
+					throw new Exception("La note est une entité nulle.");
+
+				if (this.notes.Count == 200)
+					throw new Exception("Le nombre de notes maximale que l'élève peut avoir est déjà atteinte.");
 
 				this.notes.Add(note);
 			}
