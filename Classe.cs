@@ -45,13 +45,64 @@ namespace HNI_TPmoyennes
 			}
 		}
 
-		/// <summary>
-		/// Methode de classe pour ajouter un élève à la liste des élèves
-		/// d'une classe
-		/// </summary>
-		/// <param name="prenom">Prénom du nouvel élève</param>
-		/// <param name="nom">Nom de famille du nouvel élève</param>
-		public void ajouterEleve(String prenom, String nom) 
+        /// <summary>
+        /// Constructeur du modèle Classe
+        /// </summary>
+        /// <param name="nom">Nom de la classe à attribuer</param>
+		/// <param name="eleves">Liste des élèves de cette classe</param>
+        public Classe(String nom, List<Eleve> eleves)
+        {
+            try
+            {
+                if (nom == "")
+                    throw new Exception("Le nom donné à la classe est invalide.");
+                this.nomClasse = nom;
+                this.eleves = eleves;
+                this.matieres = new List<String>();
+
+				foreach (Eleve eleve in eleves)
+				{
+					eleve.matieres = this.matieres;
+				}
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Echec de la création de la classe: {e.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Constructeur du modèle Classe
+        /// </summary>
+        /// <param name="nom">Nom de la classe à attribuer</param>
+        public Classe(String nom, List<Eleve> eleves, List<String> matieres)
+        {
+            try
+            {
+                if (nom == "")
+                    throw new Exception("Le nom donné à la classe est invalide.");
+                this.nomClasse = nom;
+                this.eleves = eleves;
+                this.matieres = matieres;
+
+                foreach (Eleve eleve in eleves)
+                {
+                    eleve.matieres = this.matieres;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Echec de la création de la classe: {e.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Methode de classe pour ajouter un élève à la liste des élèves
+        /// d'une classe
+        /// </summary>
+        /// <param name="prenom">Prénom du nouvel élève</param>
+        /// <param name="nom">Nom de famille du nouvel élève</param>
+        public void ajouterEleve(String prenom, String nom) 
 		{
 			try
 			{
