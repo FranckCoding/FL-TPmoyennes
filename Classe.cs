@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace HNI_TPmoyennes
 {
@@ -57,6 +58,7 @@ namespace HNI_TPmoyennes
 				if (this.eleves.Count < 30)
 				{
 					this.eleves.Add(new Eleve(prenom, nom));
+					this.eleves.Last().matieres = this.matieres;
 				}
                 else
                 {

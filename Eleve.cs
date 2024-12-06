@@ -19,13 +19,18 @@ namespace HNI_TPmoyennes
 		/// Liste des notes de l'élèves
 		/// </summary>
 		internal List<Note> notes { get; set; }
+        /// <summary>
+        /// Liste des matières enseignées dans la classe avec les 
+        /// moyennes associées
+        /// </summary>
+        public List<String> matieres { get; set; }
 
-		/// <summary>
-		/// Constructeur du modèle Eleve
-		/// </summary>
-		/// <param name="prenom">Prenom du nouvel élève</param>
-		/// <param name="nom">Nom de famille du nouvel élève</param>
-		public Eleve(String prenom, String nom)
+        /// <summary>
+        /// Constructeur du modèle Eleve
+        /// </summary>
+        /// <param name="prenom">Prenom du nouvel élève</param>
+        /// <param name="nom">Nom de famille du nouvel élève</param>
+        public Eleve(String prenom, String nom)
 		{
 			if (prenom == null || prenom == "" || nom == null || nom == "")
 				throw new ArgumentNullException("Les variables prénom et/ou nom de l'élève sont soit null, soit une chaîne vide.");
@@ -33,6 +38,7 @@ namespace HNI_TPmoyennes
 			this.prenom = prenom;
 			this.nom = nom;
 			this.notes = new List<Note>();
+			this.matieres = null;
 		}
 
 		/// <summary>
@@ -87,13 +93,14 @@ namespace HNI_TPmoyennes
 		public float moyenneGeneral()
 		{
 			float moyenne = 0;
+			int nombreMatiere = this.matieres.Count;
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < nombreMatiere; i++)
 	        {
 		        moyenne += this.moyenneMatiere(i);
 			}
 
-			moyenne /= 10;
+			moyenne /= nombreMatiere;
 
 
             return MathF.Truncate(moyenne * 100) / 100;
