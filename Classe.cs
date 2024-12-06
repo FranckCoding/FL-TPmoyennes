@@ -50,25 +50,12 @@ namespace HNI_TPmoyennes
         /// </summary>
         /// <param name="nom">Nom de la classe à attribuer</param>
 		/// <param name="eleves">Liste des élèves de cette classe</param>
-        public Classe(String nom, List<Eleve> eleves)
+        public Classe(String nom, List<Eleve> eleves) : this(nom)
         {
-            try
-            {
-                if (nom == "")
-                    throw new Exception("Le nom donné à la classe est invalide.");
-                this.nomClasse = nom;
-                this.eleves = eleves;
-                this.matieres = new List<String>();
-
-				foreach (Eleve eleve in eleves)
-				{
-					eleve.matieres = this.matieres;
-				}
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Echec de la création de la classe: {e.Message}");
-            }
+			foreach (Eleve eleve in eleves)
+			{
+				this.ajouterEleve(eleve.prenom, eleve.nom);
+			}
         }
 
         /// <summary>
@@ -77,25 +64,12 @@ namespace HNI_TPmoyennes
         /// <param name="nom">Nom de la classe à attribuer</param>
 		/// <param name="eleves">Liste des élèves de cette classe</param>
 		/// <param name="matieres">Liste des matières enseignées</param>
-        public Classe(String nom, List<Eleve> eleves, List<String> matieres)
+        public Classe(String nom, List<Eleve> eleves, List<String> matieres) : this(nom, eleves)
         {
-            try
-            {
-                if (nom == "")
-                    throw new Exception("Le nom donné à la classe est invalide.");
-                this.nomClasse = nom;
-                this.eleves = eleves;
-                this.matieres = matieres;
-
-                foreach (Eleve eleve in eleves)
-                {
-                    eleve.matieres = this.matieres;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Echec de la création de la classe: {e.Message}");
-            }
+            foreach (String matiere in matieres)
+			{
+				this.ajouterMatiere(matiere);
+			}
         }
 
         /// <summary>
