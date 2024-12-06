@@ -75,6 +75,8 @@ namespace HNI_TPmoyennes
         /// Constructeur du modèle Classe
         /// </summary>
         /// <param name="nom">Nom de la classe à attribuer</param>
+		/// <param name="eleves">Liste des élèves de cette classe</param>
+		/// <param name="matieres">Liste des matières enseignées</param>
         public Classe(String nom, List<Eleve> eleves, List<String> matieres)
         {
             try
