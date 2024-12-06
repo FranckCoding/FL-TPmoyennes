@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace HNI_TPmoyennes
 {
@@ -44,19 +45,47 @@ namespace HNI_TPmoyennes
 			}
 		}
 
-		/// <summary>
-		/// Methode de classe pour ajouter un élève à la liste des élèves
-		/// d'une classe
-		/// </summary>
-		/// <param name="prenom">Prénom du nouvel élève</param>
-		/// <param name="nom">Nom de famille du nouvel élève</param>
-		public void ajouterEleve(String prenom, String nom) 
+        /// <summary>
+        /// Constructeur du modèle Classe
+        /// </summary>
+        /// <param name="nom">Nom de la classe à attribuer</param>
+		/// <param name="eleves">Liste des élèves de cette classe</param>
+        public Classe(String nom, List<Eleve> eleves) : this(nom)
+        {
+			foreach (Eleve eleve in eleves)
+			{
+				this.ajouterEleve(eleve.prenom, eleve.nom);
+			}
+        }
+
+        /// <summary>
+        /// Constructeur du modèle Classe
+        /// </summary>
+        /// <param name="nom">Nom de la classe à attribuer</param>
+		/// <param name="eleves">Liste des élèves de cette classe</param>
+		/// <param name="matieres">Liste des matières enseignées</param>
+        public Classe(String nom, List<Eleve> eleves, List<String> matieres) : this(nom, eleves)
+        {
+            foreach (String matiere in matieres)
+			{
+				this.ajouterMatiere(matiere);
+			}
+        }
+
+        /// <summary>
+        /// Methode de classe pour ajouter un élève à la liste des élèves
+        /// d'une classe
+        /// </summary>
+        /// <param name="prenom">Prénom du nouvel élève</param>
+        /// <param name="nom">Nom de famille du nouvel élève</param>
+        public void ajouterEleve(String prenom, String nom) 
 		{
 			try
 			{
 				if (this.eleves.Count < 30)
 				{
 					this.eleves.Add(new Eleve(prenom, nom));
+					this.eleves.Last().matieres = this.matieres;
 				}
                 else
                 {
