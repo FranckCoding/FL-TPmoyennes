@@ -55,6 +55,9 @@ namespace HNI_TPmoyennes
 				if (this.notes.Count == 200)
 					throw new Exception("Le nombre de notes maximale que l'élève peut avoir est déjà atteinte.");
 
+				if (note.matiere == 0 || note.matiere >= matieres.Count)
+					throw new Exception("La matière correspondant à la note ne fait pas partie des matières enseignées.");
+
 				this.notes.Add(note);
 			}
 			catch (Exception e)
